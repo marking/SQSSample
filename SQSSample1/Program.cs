@@ -21,8 +21,7 @@ using Amazon.SQS.Model;
 using Newtonsoft;
 using Newtonsoft.Json;
 using Common;
-
-
+using System.Threading;
 
 namespace SQSSample1
 {
@@ -64,6 +63,7 @@ namespace SQSSample1
                 Console.WriteLine("Sending a message to MyQueue.\n");
                 for (var i = 0; i < numMessages; i++)
                 {
+                    Thread.Sleep(300);
                     var msg = new Common.Message()
                     {
                         CallbackQueue = new Uri(myQueueUrl),
@@ -77,7 +77,7 @@ namespace SQSSample1
                     {
                         QueueUrl = "https://queue.amazonaws.com/257724145439/NewDWFxFile.fifo", //Processing queue
                         MessageBody = JsonConvert.SerializeObject(msg, Formatting.None),
-                        MessageGroupId = callBackQueue,
+                        MessageGroupId = $"{callBackQueue}-{i}",
                         MessageDeduplicationId = $"{callBackQueue}-{i}"
                     };
                     sqs.SendMessage(sendMessageRequest);
