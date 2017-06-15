@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQSSample1", "SQSSample1\SQSSample1.csproj", "{B35B77E8-ACB5-4DA2-B78F-C14E1F90BA89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "ClassLibrary1\Common.csproj", "{453F621B-E4A2-4ACF-92C1-6454BD560AE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter", "Converter\Converter.csproj", "{CAD0A2AF-16E6-457C-A077-7287090AABF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B35B77E8-ACB5-4DA2-B78F-C14E1F90BA89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B35B77E8-ACB5-4DA2-B78F-C14E1F90BA89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B35B77E8-ACB5-4DA2-B78F-C14E1F90BA89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B35B77E8-ACB5-4DA2-B78F-C14E1F90BA89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{453F621B-E4A2-4ACF-92C1-6454BD560AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{453F621B-E4A2-4ACF-92C1-6454BD560AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{453F621B-E4A2-4ACF-92C1-6454BD560AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{453F621B-E4A2-4ACF-92C1-6454BD560AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAD0A2AF-16E6-457C-A077-7287090AABF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAD0A2AF-16E6-457C-A077-7287090AABF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAD0A2AF-16E6-457C-A077-7287090AABF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAD0A2AF-16E6-457C-A077-7287090AABF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,23 @@
+.vs/
+packages/
+#Just Build/Cake things
+[Oo]bj/
+[Cc]ake/[Tt]ools/
+[Bb]in/
+
+
+# ignore diff files
+*.diff
+
+#ignore metaproj files produced by msbuild
+**.metaproj
+*.swp
+*.[Vv][Cc].db
+
+*.swp
+*.un~
+
+*.opendb
+*.db
+*.bsc
+*.tlog
