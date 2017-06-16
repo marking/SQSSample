@@ -34,6 +34,7 @@ namespace SQSSample1
         public static void Main(string[] args)
         {
             var sqs = new AmazonSQSClient();
+            var rnd = new Random();
 
             try
             {
@@ -47,8 +48,8 @@ namespace SQSSample1
                     QueueUrl = "https://queue.amazonaws.com/257724145439/NewDWFxFile.fifo",
                     MaxNumberOfMessages = 1,
                     WaitTimeSeconds = 20,
-                    MessageAttributeNames = new List<string>() {"all"},
-                    AttributeNames = new List<string>() {"all"}
+                    MessageAttributeNames = new List<string>() {"All"},
+                    AttributeNames = new List<string>() {"All"}
                 };
                 while (true)
                 {
@@ -60,43 +61,43 @@ namespace SQSSample1
                         {
                             var recMsg = JsonConvert.DeserializeObject<Common.Message>(message.Body);
                             Console.WriteLine($"Processing {recMsg.S3Path}");
-                            Thread.Sleep(TimeSpan.FromSeconds(30));
+                            Thread.Sleep(TimeSpan.FromSeconds(rnd.Next(15)));
                             Console.WriteLine("Finished");
-                            //Console.WriteLine("  Message");
-                            //foreach (var keyName in message.MessageAttributes.Keys)
-                            //{
-                            //    Console.WriteLine($"    {keyName} -> {message.MessageAttributes[keyName]}");
-                            //}
-                            //foreach (var keyName in message.Attributes.Keys)
-                            //{
-                            //    Console.WriteLine($"    {keyName} -> {message.Attributes[keyName]}");
-                            //}
+                            Console.WriteLine("  Message");
+                            foreach (var keyName in message.MessageAttributes.Keys)
+                            {
+                                Console.WriteLine($"    {keyName} -> {message.MessageAttributes[keyName]}");
+                            }
+                            foreach (var keyName in message.Attributes.Keys)
+                            {
+                                Console.WriteLine($"    {keyName} -> {message.Attributes[keyName]}");
+                            }
 
-                            //if (!string.IsNullOrEmpty(message.MessageId))
-                            //{
-                            //    Console.WriteLine("    MessageId: {0}", message.MessageId);
-                            //}
-                            //if (!string.IsNullOrEmpty(message.ReceiptHandle))
-                            //{
-                            //    Console.WriteLine("    ReceiptHandle: {0}", message.ReceiptHandle);
-                            //}
-                            //if (!string.IsNullOrEmpty(message.MD5OfBody))
-                            //{
-                            //    Console.WriteLine("    MD5OfBody: {0}", message.MD5OfBody);
-                            //}
-                            //if (!string.IsNullOrEmpty(message.Body))
-                            //{
-                            //    Console.WriteLine("    Body: {0}", message.Body);
-                            //    Console.WriteLine($"    {recMsg}");
-                            //}
+                            if (!string.IsNullOrEmpty(message.MessageId))
+                            {
+                                Console.WriteLine("    MessageId: {0}", message.MessageId);
+                            }
+                            if (!string.IsNullOrEmpty(message.ReceiptHandle))
+                            {
+                                Console.WriteLine("    ReceiptHandle: {0}", message.ReceiptHandle);
+                            }
+                            if (!string.IsNullOrEmpty(message.MD5OfBody))
+                            {
+                                Console.WriteLine("    MD5OfBody: {0}", message.MD5OfBody);
+                            }
+                            if (!string.IsNullOrEmpty(message.Body))
+                            {
+                                Console.WriteLine("    Body: {0}", message.Body);
+                                Console.WriteLine($"    {recMsg}");
+                            }
 
-                            //foreach (string attributeKey in message.Attributes.Keys)
-                            //{
-                            //    Console.WriteLine("  Attribute");
-                            //    Console.WriteLine("    Name: {0}", attributeKey);
-                            //    var value = message.Attributes[attributeKey];
-                            //    Console.WriteLine("    Value: {0}", string.IsNullOrEmpty(value) ? "(no value)" : value);
-                            //}
+                            foreach (string attributeKey in message.Attributes.Keys)
+                            {
+                                Console.WriteLine("  Attribute");
+                                Console.WriteLine("    Name: {0}", attributeKey);
+                                var value = message.Attributes[attributeKey];
+                                Console.WriteLine("    Value: {0}", string.IsNullOrEmpty(value) ? "(no value)" : value);
+                            }
                             //send ack
                             recMsg.Result = "OK";
                             recMsg.TypeOfMessage = MessageType.ProcessResponse;

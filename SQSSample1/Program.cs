@@ -31,6 +31,7 @@ namespace SQSSample1
         public static void Main(string[] args)
         {
             var sqs = new AmazonSQSClient();
+            var rnd = new Random();
 
             try
             {
@@ -57,13 +58,13 @@ namespace SQSSample1
                     }
                 }
                 Console.WriteLine();
-                var numMessages = 5;
+                var numMessages = 10;
 
                 //Sending a message
                 Console.WriteLine("Sending a message to MyQueue.\n");
                 for (var i = 0; i < numMessages; i++)
                 {
-                    Thread.Sleep(300);
+                    Thread.Sleep(TimeSpan.FromSeconds(rnd.Next(5)));
                     var msg = new Common.Message()
                     {
                         CallbackQueue = new Uri(myQueueUrl),
@@ -91,8 +92,8 @@ namespace SQSSample1
                         QueueUrl = myQueueUrl,
                         MaxNumberOfMessages = numMessages,
                         WaitTimeSeconds = 1,
-                        AttributeNames = new List<string>() { "all"},
-                        MessageAttributeNames = new List<string>( ) { "all"}
+                        AttributeNames = new List<string>() { "All"},
+                        MessageAttributeNames = new List<string>( ) { "All"}
                     };
                     var receiveMessageResponse = sqs.ReceiveMessage(receiveMessageRequest);
                     if (receiveMessageResponse.Messages != null)
